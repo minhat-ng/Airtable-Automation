@@ -1,13 +1,9 @@
-## These are scripts for 2 versions of the drop-off algorithm for Grassroots Grocery.<br>
-**📍Location** _version 2_<br>
-For each available drop-off, 
-- Collect confirmed drivers for this weekend's events that don't have the current location in their restricted neighborhoods' list. 
-- After filtering by time slot matching, I used Moore's voting algorithm to find the most frequent location. If it is in the filtered list, then I would assign that driver. 
-- Else, I would assign the nearest driver by finding the closest driver's zip code from the location.
-<br>
+##Scripts for 2 Grassroots Grocery Drop-off Algorithm Versions.<br>
+**📍Location** v2:<br>
+- Identify eligible drivers for weekend events not restricted by their current neighborhood.
+- Apply Moore's voting algorithm to find the popular location after time-based filtering.
+- Assign the driver with the most common location, or the nearest based on zip code if needed.
 
-**🚗Driver** _version 1_<br>
-For each confirmed driver,
-- Collect available locations for the current week.
-- Remove locations that are in the current driver's restricted neighborhoods. 
-- After filtering by time slot matching, assign the closest driver to the location using zip codes.
+**🚗Driver**  v1:<br>
+- Gather locations open for the week and exclude the driver's restricted areas.
+- After time-based filtering, match the closest driver to a location using zip codes.
