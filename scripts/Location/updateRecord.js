@@ -1,17 +1,15 @@
 let inputConfig = input.config()
-const slot = inputConfig.slot
-const locID = inputConfig.id
-let recordIds = [locID]
+const best_loc_id = inputConfig.best_loc_id
+const best_loc_name = inputConfig.best_loc_name
+const driver_id = inputConfig.driver_id
+const driver_name = inputConfig.driver_name
+
 let table = base.getTable("📅 Scheduled Slots")
+// let query = await table.selectRecordsAsync({fields: []});
 
-let locationTable = base.getTable("📍 Drop off locations")
-let view = locationTable.getView("Drop-offs for This Weekend")
+await table.updateRecordAsync(driver_id, {
+    "📍 Drop off location": [{id: best_loc_id}],
+})
 
-let queryResult = await view.selectRecordsAsync({fields: ["Not Full"]});
-let record = queryResult.getRecord(queryResult.recordIds[0]);
-// console.log(record.getCellValueAsString("is Full"));
-if (record.getCellValueAsString("Not Full") === "True"){
-        await table.updateRecordAsync(slot, {
-        "📍 Drop off location": [{id: locID}],
-    })
-}
+
+// console.log(`Updated ${driver_name} drop off location to ${best_loc_name}`);
